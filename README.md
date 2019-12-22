@@ -22,7 +22,7 @@ ports = [
     {
         driver = "qtoggleserver.dallastemp.ports.Temperature"
         address = "28:00:00:06:63:76:96"
-        name = "livingroom"
+        peripheral_name = "livingroom"
     }
     ...
 ]
