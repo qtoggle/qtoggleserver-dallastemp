@@ -34,7 +34,6 @@ class Temperature(onewire.OneWirePort):
     WRITABLE = False
     MIN = -55
     MAX = 125
-    DISPLAY_NAME = 'Temperature'
     UNIT = u'\xb0C'  # degrees celsius
 
     PERIPHERAL_CLASS = DallasTemperatureSensor
