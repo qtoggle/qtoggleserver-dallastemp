@@ -13,7 +13,7 @@ class DallasTemperatureSensor(onewire.OneWirePeripheral):
 
     logger = logger
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
         self._temp = None
