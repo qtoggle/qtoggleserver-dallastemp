@@ -2,6 +2,8 @@
 import logging
 import re
 
+from typing import Optional
+
 from qtoggleserver.lib import onewire
 
 
@@ -16,9 +18,9 @@ class DallasTemperatureSensor(onewire.OneWirePeripheral):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-        self._temp = None
+        self._temp: Optional[float] = None
 
-    def get_temp(self):
+    def get_temp(self) -> Optional[float]:
         data = self.read()
         if data:
             m = re.search(self.TEMP_PATTERN, data, re.MULTILINE | re.DOTALL)
@@ -39,5 +41,5 @@ class Temperature(onewire.OneWirePort):
     PERIPHERAL_CLASS = DallasTemperatureSensor
     ID = 'temperature'
 
-    async def read_value(self):
+    async def read_value(self) -> Optional[float]:
         return self.get_peripheral().get_temp()
