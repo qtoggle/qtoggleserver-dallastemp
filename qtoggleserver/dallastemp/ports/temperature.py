@@ -4,6 +4,7 @@ import re
 
 from typing import Optional
 
+from qtoggleserver.core import ports as core_ports
 from qtoggleserver.lib import onewire
 
 
@@ -12,6 +13,7 @@ logger = logging.getLogger(__name__)
 
 class DallasTemperatureSensor(onewire.OneWirePeripheral):
     TEMP_PATTERN = r't=(\d+)'
+    ERROR_VALUE = '85000'  # This value indicates a communication error
 
     logger = logger
 
@@ -25,7 +27,11 @@ class DallasTemperatureSensor(onewire.OneWirePeripheral):
         if data:
             m = re.search(self.TEMP_PATTERN, data, re.MULTILINE | re.DOTALL)
             if m:
-                self._temp = round(int(m.group(1)) / 100.0) / 10.0
+                value_str = m.group(1)
+                if value_str == self.ERROR_VALUE:
+                    raise core_ports.PortReadError('Sensor communication error')
+
+                self._temp = round(int(value_str) / 100.0) / 10.0
                 self.debug('temperature is %.1f degrees', self._temp)
 
         return self._temp
