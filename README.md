@@ -1,18 +1,18 @@
-### About
+## About
 
 This is an addon for [qToggleServer](https://github.com/qtoggle/qtoggleserver).
 
 It provides Dallas DS18B20 temperature sensor support for qToggleServer.
 
 
-### Install
+## Install
 
 Install using pip:
 
     pip install qtoggleserver-dallastemp
 
 
-### Usage
+## Usage
 
 ##### `qtoggleserver.conf:`
 ``` javascript
