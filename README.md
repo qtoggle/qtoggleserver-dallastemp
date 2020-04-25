@@ -17,12 +17,12 @@ Install using pip:
 ##### `qtoggleserver.conf:`
 ``` javascript
 ...
-ports = [
+peripherals = [
     ...
     {
-        driver = "qtoggleserver.dallastemp.ports.Temperature"
-        address = "28-00000B247706"
-        peripheral_name = "livingroom"
+        driver = "qtoggleserver.dallastemp.DallasTemperatureSensor"
+        name = "livingroom"         # a name of your choice
+        address = "28-00000B247706" # the 1-wire address 
     }
     ...
 ]

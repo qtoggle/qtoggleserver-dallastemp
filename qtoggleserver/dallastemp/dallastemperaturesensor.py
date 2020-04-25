@@ -2,7 +2,7 @@
 import logging
 import re
 
-from typing import Optional
+from typing import List, Optional, Type
 
 from qtoggleserver.core import ports as core_ports
 from qtoggleserver.lib import onewire
@@ -22,6 +22,13 @@ class DallasTemperatureSensor(onewire.OneWirePeripheral):
 
         self._temp: Optional[float] = None
 
+    def make_port_args(self) -> List[Type[core_ports.BasePort]]:
+        from .ports import Temperature
+
+        return [
+            Temperature
+        ]
+
     def get_temp(self) -> Optional[float]:
         data = self.read()
         if data:
@@ -35,17 +42,3 @@ class DallasTemperatureSensor(onewire.OneWirePeripheral):
                 self.debug('temperature is %.1f degrees', self._temp)
 
         return self._temp
-
-
-class Temperature(onewire.OneWirePort):
-    TYPE = 'number'
-    WRITABLE = False
-    MIN = -55
-    MAX = 125
-    UNIT = u'\xb0C'  # Degrees celsius
-
-    PERIPHERAL_CLASS = DallasTemperatureSensor
-    ID = 'temperature'
-
-    async def read_value(self) -> Optional[float]:
-        return self.get_peripheral().get_temp()

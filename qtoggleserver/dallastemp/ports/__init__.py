@@ -1,2 +1,0 @@
-
-from .temperature import Temperature
