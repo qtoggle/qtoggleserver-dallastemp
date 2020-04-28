@@ -2,4 +2,4 @@
 from .dallastemperaturesensor import DallasTemperatureSensor
 
 
-VERSION = 'unknown'
+VERSION = 'unknown-version'
