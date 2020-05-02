@@ -17,10 +17,10 @@ class DallasTemperatureSensor(onewire.OneWirePeripheral):
 
     logger = logger
 
-    def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-
+    def __init__(self, **kwargs) -> None:
         self._temp: Optional[float] = None
+
+        super().__init__(**kwargs)
 
     def make_port_args(self) -> List[Type[core_ports.BasePort]]:
         from .ports import Temperature
