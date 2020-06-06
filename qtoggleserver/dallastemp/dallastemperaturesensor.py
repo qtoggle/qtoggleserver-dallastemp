@@ -22,7 +22,7 @@ class DallasTemperatureSensor(onewire.OneWirePeripheral):
 
         super().__init__(**kwargs)
 
-    def make_port_args(self) -> List[Type[core_ports.BasePort]]:
+    async def make_port_args(self) -> List[Type[core_ports.BasePort]]:
         from .ports import Temperature
 
         return [
