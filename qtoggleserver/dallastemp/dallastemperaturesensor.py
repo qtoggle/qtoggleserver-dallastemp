@@ -2,7 +2,7 @@
 import logging
 import re
 
-from typing import List, Optional, Type
+from typing import Optional, Type
 
 from qtoggleserver.core import ports as core_ports
 from qtoggleserver.lib import onewire
@@ -22,7 +22,7 @@ class DallasTemperatureSensor(onewire.OneWirePeripheral):
 
         super().__init__(**kwargs)
 
-    async def make_port_args(self) -> List[Type[core_ports.BasePort]]:
+    async def make_port_args(self) -> list[type[core_ports.BasePort]]:
         from .ports import Temperature
 
         return [
