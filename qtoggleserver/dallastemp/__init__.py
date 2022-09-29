@@ -1,4 +1,3 @@
-
 from .dallastemperaturesensor import DallasTemperatureSensor
 
 

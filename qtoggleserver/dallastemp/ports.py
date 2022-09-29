@@ -1,8 +1,6 @@
-
 import logging
 
 from typing import cast, Optional
-
 
 from qtoggleserver.lib import onewire
 
