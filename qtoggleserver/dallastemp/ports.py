@@ -15,7 +15,7 @@ class Temperature(onewire.OneWirePort):
     WRITABLE = False
     MIN = -55
     MAX = 125
-    UNIT = u'\xb0C'  # Degrees celsius
+    UNIT = u'\xb0C'  # degrees celsius
 
     ID = 'temperature'
 

@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 class DallasTemperatureSensor(onewire.OneWirePeripheral):
     TEMP_PATTERN = r't=(\d+)'
-    ERROR_VALUE = '85000'  # This value indicates a communication error
+    ERROR_VALUE = '85000'  # indicates a communication error
 
     logger = logger
 
