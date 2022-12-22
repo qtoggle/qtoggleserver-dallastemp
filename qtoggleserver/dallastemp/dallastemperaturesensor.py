@@ -7,14 +7,11 @@ from qtoggleserver.core import ports as core_ports
 from qtoggleserver.lib import onewire
 
 
-logger = logging.getLogger(__name__)
-
-
 class DallasTemperatureSensor(onewire.OneWirePeripheral):
     TEMP_PATTERN = r't=(\d+)'
     ERROR_VALUE = '85000'  # indicates a communication error
 
-    logger = logger
+    logger = logging.getLogger(__name__)
 
     def __init__(self, **kwargs) -> None:
         self._temp: Optional[float] = None
