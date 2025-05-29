@@ -1,4 +1,6 @@
 from .dallastemperaturesensor import DallasTemperatureSensor
 
 
-VERSION = 'unknown-version'
+__all__ = ["DallasTemperatureSensor"]
+
+VERSION = "unknown-version"

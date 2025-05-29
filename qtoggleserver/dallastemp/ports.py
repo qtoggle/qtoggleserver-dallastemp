@@ -1,6 +1,6 @@
 import logging
 
-from typing import cast, Optional
+from typing import cast
 
 from qtoggleserver.lib import onewire
 
@@ -11,13 +11,13 @@ logger = logging.getLogger(__name__)
 
 
 class Temperature(onewire.OneWirePort):
-    TYPE = 'number'
+    TYPE = "number"
     WRITABLE = False
     MIN = -55
     MAX = 125
-    UNIT = u'\xb0C'  # degrees celsius
+    UNIT = "\xb0C"  # degrees celsius
 
-    ID = 'temperature'
+    ID = "temperature"
 
-    async def read_value(self) -> Optional[float]:
+    async def read_value(self) -> float | None:
         return cast(DallasTemperatureSensor, self.get_peripheral()).get_temp()
