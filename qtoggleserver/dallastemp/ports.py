@@ -2,6 +2,7 @@ import logging
 
 from typing import cast
 
+from qtoggleserver.core.typing import NullablePortValue
 from qtoggleserver.lib import onewire
 
 from .dallastemperaturesensor import DallasTemperatureSensor
@@ -19,5 +20,5 @@ class Temperature(onewire.OneWirePort):
 
     ID = "temperature"
 
-    async def read_value(self) -> float | None:
+    async def read_value(self) -> NullablePortValue:
         return cast(DallasTemperatureSensor, self.get_peripheral()).get_temp()
